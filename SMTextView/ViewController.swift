@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var textView: SMTextView!
     override func viewDidLoad() {
         super.viewDidLoad()
-//        textView.placeholder = "THIS IS MY PLACEHOLDER"
+        textView.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,6 +25,17 @@ class ViewController: UIViewController {
         super.touchesBegan(touches, with: event)
         textView.resignFirstResponder()
     }
-
 }
 
+extension ViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+        }
+        return true
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        print(textView.text)
+    }
+}
