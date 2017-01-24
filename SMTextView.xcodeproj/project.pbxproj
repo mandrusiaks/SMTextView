@@ -12,6 +12,8 @@
 		3F970C541E357B50001B077F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F970C521E357B50001B077F /* Main.storyboard */; };
 		3F970C561E357B50001B077F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F970C551E357B50001B077F /* Assets.xcassets */; };
 		3F970C591E357B50001B077F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F970C571E357B50001B077F /* LaunchScreen.storyboard */; };
+		3F970C691E357E4F001B077F /* SMTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F970C681E357E4F001B077F /* SMTextView.swift */; };
+		3F970C6B1E357E6F001B077F /* SMTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F970C6A1E357E6F001B077F /* SMTextView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		3F970C551E357B50001B077F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F970C581E357B50001B077F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F970C5A1E357B50001B077F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F970C681E357E4F001B077F /* SMTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMTextView.swift; sourceTree = "<group>"; };
+		3F970C6A1E357E6F001B077F /* SMTextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMTextView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +64,18 @@
 				3F970C551E357B50001B077F /* Assets.xcassets */,
 				3F970C571E357B50001B077F /* LaunchScreen.storyboard */,
 				3F970C5A1E357B50001B077F /* Info.plist */,
+				3F970C671E357C2F001B077F /* SMTextView */,
 			);
 			path = SMTextView;
+			sourceTree = "<group>";
+		};
+		3F970C671E357C2F001B077F /* SMTextView */ = {
+			isa = PBXGroup;
+			children = (
+				3F970C681E357E4F001B077F /* SMTextView.swift */,
+				3F970C6A1E357E6F001B077F /* SMTextView.xib */,
+			);
+			name = SMTextView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +141,7 @@
 				3F970C591E357B50001B077F /* LaunchScreen.storyboard in Resources */,
 				3F970C561E357B50001B077F /* Assets.xcassets in Resources */,
 				3F970C541E357B50001B077F /* Main.storyboard in Resources */,
+				3F970C6B1E357E6F001B077F /* SMTextView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +154,7 @@
 			files = (
 				3F970C511E357B50001B077F /* ViewController.swift in Sources */,
 				3F970C4F1E357B50001B077F /* AppDelegate.swift in Sources */,
+				3F970C691E357E4F001B077F /* SMTextView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +318,7 @@
 				3F970C5F1E357B50001B077F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
