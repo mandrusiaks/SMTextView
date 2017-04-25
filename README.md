@@ -14,6 +14,30 @@ A custom implementation of UITextView with a placeholder. This implementation co
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+### Usage
+
+Instead of using Interface Builder, you can customize properties manually in code.
+
+```swift
+
+@IBOutlet weak var textView: SMTextView!
+
+...
+
+override func viewDidLoad() {
+    super.viewDidLoad()
+    textView.placeholder = "Enter details about the event."
+    textView.placeholderColor = .purple
+    textView.topInset = 45
+    textView.bottomInset = 45
+    textView.leftInset = 15
+    textView.rightInset = 15
+}
+
+
+
+```
+
 ## Requirements
 
 ## Installation
