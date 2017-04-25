@@ -5,6 +5,11 @@
 [![License](https://img.shields.io/cocoapods/l/SMTextView.svg?style=flat)](http://cocoapods.org/pods/SMTextView)
 [![Platform](https://img.shields.io/cocoapods/p/SMTextView.svg?style=flat)](http://cocoapods.org/pods/SMTextView)
 
+A custom implementation of UITextView with a placeholder. This implementation contains the ability to customize top, left, bottom, and right insets individually. SMTextView is compatible with Interface Builder.
+
+| ![SMTextView](SMTextView/Assets/SMTextView.png) | ![SMTextView2](SMTextView/Assets/IB.png) |
+|:-----------------------------------------------:|:----------------------------------------:|
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
@@ -13,6 +18,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Installation
 
+### CocoaPods
 SMTextView is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
@@ -20,9 +26,10 @@ it, simply add the following line to your Podfile:
 pod "SMTextView"
 ```
 
-## Author
+### Manual
 
-mandrusiaks, mandrusiaks@users.noreply.github.com
+Alternatively, you can simply add ```SMTextView.swift``` to your project.
+
 
 ## License
 
