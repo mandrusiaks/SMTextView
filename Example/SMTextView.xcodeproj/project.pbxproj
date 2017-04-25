@@ -30,7 +30,7 @@
 /* Begin PBXFileReference section */
 		0580D361013A789588DC2181 /* Pods_SMTextView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SMTextView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		46DCA9B38DF5CBD0B454E5E1 /* Pods_SMTextView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SMTextView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5F7AF131104C134B59A6B6B7 /* SMTextView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = SMTextView.podspec; path = ../SMTextView.podspec; sourceTree = "<group>"; };
+		5F7AF131104C134B59A6B6B7 /* SMTextView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SMTextView.podspec; path = ../SMTextView.podspec; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* SMTextView_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SMTextView_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -44,8 +44,8 @@
 		61BD7F7AEE37A37BC1E7D1A4 /* Pods-SMTextView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SMTextView_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-SMTextView_Example/Pods-SMTextView_Example.release.xcconfig"; sourceTree = "<group>"; };
 		71E5A8B26E34994CDAE81A8F /* Pods-SMTextView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SMTextView_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SMTextView_Tests/Pods-SMTextView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		A713839E8270D73A0D7F747E /* Pods-SMTextView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SMTextView_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SMTextView_Tests/Pods-SMTextView_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		B537D06DC7F12ECC0C7CDC16 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		D10F1A1737865A0C067A1571 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		B537D06DC7F12ECC0C7CDC16 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		D10F1A1737865A0C067A1571 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		F9C0BA08880036E5E723AEF9 /* Pods-SMTextView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SMTextView_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SMTextView_Example/Pods-SMTextView_Example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -215,6 +215,7 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = FJ9965JL6C;
 						LastSwiftMigration = 0820;
 					};
 					607FACE41AFB9204008FA782 = {
@@ -496,6 +497,7 @@
 			baseConfigurationReference = F9C0BA08880036E5E723AEF9 /* Pods-SMTextView_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = FJ9965JL6C;
 				INFOPLIST_FILE = SMTextView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -510,6 +512,7 @@
 			baseConfigurationReference = 61BD7F7AEE37A37BC1E7D1A4 /* Pods-SMTextView_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = FJ9965JL6C;
 				INFOPLIST_FILE = SMTextView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
