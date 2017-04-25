@@ -10,28 +10,61 @@ import UIKit
 
 @IBDesignable public class SMTextView: UITextView {
 
-    @IBInspectable var cornerRadius: CGFloat = 0
-    @IBInspectable var placeholder: String = "Placeholder" {
+    @IBInspectable public var cornerRadius: CGFloat = 0 {
+        didSet {
+            refreshPlaceholderInput()
+        }
+    }
+    @IBInspectable public var placeholder: String = "Placeholder" {
         didSet {
             if text != "" {
                 placeholder = ""
             }
+            refreshPlaceholderInput()
         }
     }
-
-    @IBInspectable var placeholderColor: UIColor = .lightGray
-    @IBInspectable var borderColor: UIColor = .red
-    @IBInspectable var borderWidth: CGFloat = 0
-    @IBInspectable var topInset: CGFloat = 0
-    @IBInspectable var leftInset: CGFloat = 0
-    @IBInspectable var bottomInset: CGFloat = 0
-    @IBInspectable var rightInset: CGFloat = 0
+    @IBInspectable public var placeholderColor: UIColor = .lightGray {
+        didSet {
+            refreshPlaceholderInput()
+        }
+    }
+    @IBInspectable public var borderColor: UIColor = .red {
+        didSet {
+            refreshPlaceholderInput()
+        }
+    }
+    @IBInspectable public var borderWidth: CGFloat = 0 {
+        didSet {
+            refreshPlaceholderInput()
+        }
+    }
+    @IBInspectable public var topInset: CGFloat = 0 {
+        didSet {
+            refreshPlaceholderInput()
+        }
+    }
+    @IBInspectable public var leftInset: CGFloat = 0 {
+        didSet {
+            refreshPlaceholderInput()
+        }
+    }
+    @IBInspectable public var bottomInset: CGFloat = 0 {
+        didSet {
+            refreshPlaceholderInput()
+        }
+    }
+    @IBInspectable public var rightInset: CGFloat = 0 {
+        didSet {
+            refreshPlaceholderInput()
+        }
+    }
 
     public override var text: String! {
         didSet {
             if text != "" {
                 placeholder = ""
             }
+            refreshPlaceholderInput()
         }
     }
 
@@ -47,10 +80,12 @@ import UIKit
 
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        initPlaceholder()
     }
 
     override public init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
+        initPlaceholder()
     }
 
     private func initPlaceholder() {
@@ -62,6 +97,12 @@ import UIKit
         placeholderTextView.backgroundColor = .clear
         placeholderTextView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(placeholderTapped)))
         addSubview(placeholderTextView)
+    }
+    private func refreshPlaceholderInput() {
+        placeholderTextView.font = font
+        placeholderTextView.text = placeholder
+        placeholderTextView.textColor = placeholderColor
+        placeholderTextView.textAlignment = textAlignment
     }
 
     override public func becomeFirstResponder() -> Bool {
@@ -86,12 +127,6 @@ import UIKit
         super.prepareForInterfaceBuilder()
         initPlaceholder()
     }
-
-    override public func awakeFromNib() {
-        super.awakeFromNib()
-        initPlaceholder()
-    }
-
 
     //MARK: Actions
     func placeholderTapped(_ recognizer: UITapGestureRecognizer) {

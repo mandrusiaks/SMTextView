@@ -32,6 +32,7 @@
                 <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
                     <real key="value" value="15"/>
                 </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="a"/>
             </userDefinedRuntimeAttributes>
             <point key="canvasLocation" x="76.5" y="-327.5"/>
         </textView>
