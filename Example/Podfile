@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'SMTextView_Example' do
+  pod 'SMTextView', :path => '../'
+
+  target 'SMTextView_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
