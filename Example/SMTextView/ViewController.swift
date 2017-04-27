@@ -15,6 +15,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//        textView.isCharacterCountEnabled = false
+        textView.maxCharacterCount = 400
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
