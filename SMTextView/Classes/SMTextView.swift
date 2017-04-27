@@ -10,6 +10,7 @@ import UIKit
 
 @IBDesignable public class SMTextView: UITextView {
 
+    //MARK: - Variables
     @IBInspectable public var cornerRadius: CGFloat = 0 {
         didSet {
             refreshPlaceholderInput()
@@ -48,12 +49,12 @@ import UIKit
             refreshPlaceholderInput()
         }
     }
-    @IBInspectable public var bottomInset: CGFloat = 0 {
+    @IBInspectable public var rightInset: CGFloat = 0 {
         didSet {
             refreshPlaceholderInput()
         }
     }
-    @IBInspectable public var rightInset: CGFloat = 0 {
+    private var bottomInset: CGFloat = 24 {
         didSet {
             refreshPlaceholderInput()
         }
@@ -68,8 +69,25 @@ import UIKit
         }
     }
 
-    private var placeholderTextView: UITextView!
+    public var isCharacterCountEnabled = true {
+        didSet {
+            if !isCharacterCountEnabled {
+                counterLabel.removeFromSuperview()
+            }
+        }
+    }
+    public var maxCharacterCount = 100 {
+        didSet {
+            updateCounterLabelMax()
+        }
+    }
 
+    //MARK: - Additional Views
+    fileprivate var placeholderTextView: UITextView!
+    fileprivate var counterLabel: UILabel!
+
+
+    //MARK: - Overrides
     override public func draw(_ rect: CGRect) {
         layer.cornerRadius = cornerRadius
         layer.borderColor = borderColor.cgColor
@@ -80,29 +98,17 @@ import UIKit
 
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        delegate = self
         initPlaceholder()
+        initLabel()
+
     }
 
     override public init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
+        delegate = self
         initPlaceholder()
-    }
-
-    private func initPlaceholder() {
-        placeholderTextView = UITextView(frame: bounds)
-        placeholderTextView.font = font
-        placeholderTextView.text = placeholder
-        placeholderTextView.textColor = placeholderColor
-        placeholderTextView.textAlignment = textAlignment
-        placeholderTextView.backgroundColor = .clear
-        placeholderTextView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(placeholderTapped)))
-        addSubview(placeholderTextView)
-    }
-    private func refreshPlaceholderInput() {
-        placeholderTextView.font = font
-        placeholderTextView.text = placeholder
-        placeholderTextView.textColor = placeholderColor
-        placeholderTextView.textAlignment = textAlignment
+        initLabel()
     }
 
     override public func becomeFirstResponder() -> Bool {
@@ -126,10 +132,77 @@ import UIKit
     override public func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         initPlaceholder()
+        initLabel()
     }
 
     //MARK: Actions
     func placeholderTapped(_ recognizer: UITapGestureRecognizer) {
         _ = self.becomeFirstResponder()
+    }
+}
+
+//MARK: - Custom Initialization
+extension SMTextView {
+    fileprivate func initPlaceholder() {
+        placeholderTextView = UITextView(frame: bounds)
+        placeholderTextView.font = font
+        placeholderTextView.text = placeholder
+        placeholderTextView.textColor = placeholderColor
+        placeholderTextView.textAlignment = textAlignment
+        placeholderTextView.backgroundColor = .clear
+        placeholderTextView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(placeholderTapped)))
+        addSubview(placeholderTextView)
+    }
+
+    fileprivate func initLabel() {
+        if isCharacterCountEnabled {
+            counterLabel = UILabel()
+            counterLabel.font = counterLabel.font.withSize(10)
+            counterLabel.text = "0/\(maxCharacterCount)"
+            updateCounterLabel()
+            addSubview(counterLabel)
+        }
+    }
+}
+
+//MARK: - Update Methods
+extension SMTextView {
+    fileprivate func updateCounterLabel() {
+        setNeedsLayout()
+        layoutIfNeeded()
+
+        counterLabel.sizeToFit()
+        let x = bounds.maxX-counterLabel.bounds.width-8
+        let y = bounds.maxY-counterLabel.bounds.height-8
+        counterLabel.frame.origin = CGPoint(x: x, y: y)
+    }
+
+    fileprivate func updateCounterLabelMax() {
+        counterLabel.text = "0/\(maxCharacterCount)"
+        counterLabel.sizeToFit()
+    }
+
+    fileprivate func refreshPlaceholderInput() {
+        placeholderTextView.font = font
+        placeholderTextView.text = placeholder
+        placeholderTextView.textColor = placeholderColor
+        placeholderTextView.textAlignment = textAlignment
+    }
+}
+
+//MARK: - UITextViewDelegate
+extension SMTextView: UITextViewDelegate {
+    public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if isCharacterCountEnabled {
+            return textView.text.characters.count + text.characters.count - range.length <= maxCharacterCount
+        }
+        return true
+    }
+    public func textViewDidChange(_ textView: UITextView) {
+        if isCharacterCountEnabled {
+            let count = textView.text.characters.count
+            counterLabel.text = "\(count)/\(maxCharacterCount)"
+            updateCounterLabel()
+        }
     }
 }
