@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/cocoapods/l/SMTextView.svg?style=flat)](http://cocoapods.org/pods/SMTextView)
 [![Platform](https://img.shields.io/cocoapods/p/SMTextView.svg?style=flat)](http://cocoapods.org/pods/SMTextView)
 
-A custom implementation of UITextView with a placeholder. This implementation contains the ability to customize top, left, bottom, and right insets individually. SMTextView is compatible with Interface Builder.
+A custom implementation of UITextView with a placeholder and character count. This implementation contains the ability to customize top, left, and right insets individually. SMTextView is compatible with Interface Builder. SMTextView also contains a character count that can be enabled/disabled. To disable, simply set isCharacterCountEnabled to false.
 
 | ![SMTextView](SMTextView/Assets/SMTextView.png) | ![SMTextView2](SMTextView/Assets/IB.png) |
 |:-----------------------------------------------:|:----------------------------------------:|
@@ -18,6 +18,10 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 Instead of using Interface Builder, you can customize properties manually in code.
 
+By default, SMTextView's character count is enabled. To hide the character count for SMTextView, simply set ```isCharacterCountEnabled = false```
+
+Optionally, you can set ```maxCharacterCount```. The default character count is 100.
+
 ```swift
 
 @IBOutlet weak var textView: SMTextView!
@@ -26,14 +30,16 @@ Instead of using Interface Builder, you can customize properties manually in cod
 
 override func viewDidLoad() {
     super.viewDidLoad()
+    //NOTE: Due to character count label, bottomInset is currently no longer customizable. 
+    //      This may be re-enabled in the future.
     textView.placeholder = "Enter details about the event."
     textView.placeholderColor = .purple
     textView.topInset = 45
-    textView.bottomInset = 45
     textView.leftInset = 15
     textView.rightInset = 15
+    textView.isCharacterCountEnabled = true
+    textView.maxCharacterCount = 200
 }
-
 
 
 ```
