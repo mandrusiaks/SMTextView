@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SMTextView'
-  s.version          = '0.2.1'
-  s.summary          = 'SMTextView provides an easy way to specify a placeholder using a text view.'
+  s.version          = '0.3.0'
+  s.summary          = 'SMTextView provides an easy way to specify a placeholder using a text view. Includes character count.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-SMTextView is a custom implementation of UITextView with a placeholder. This implementation contains the ability to customize top, left, bottom, and right insets individually. SMTextView is compatible with Interface Builder.
+A custom implementation of UITextView with a placeholder and character count. This implementation contains the ability to customize top, left, and right insets individually. SMTextView is compatible with Interface Builder. SMTextView also contains a character count that can be enabled/disabled. To disable, simply set isCharacterCountEnabled to false.
 
                        DESC
 
