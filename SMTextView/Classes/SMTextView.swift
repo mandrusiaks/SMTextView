@@ -42,21 +42,25 @@ import UIKit
     @IBInspectable public var topInset: CGFloat = 0 {
         didSet {
             refreshPlaceholderInput()
+            updateInsets()
         }
     }
     @IBInspectable public var leftInset: CGFloat = 0 {
         didSet {
             refreshPlaceholderInput()
+            updateInsets()
         }
     }
     @IBInspectable public var rightInset: CGFloat = 0 {
         didSet {
             refreshPlaceholderInput()
+            updateInsets()
         }
     }
-    private var bottomInset: CGFloat = 24 {
+    fileprivate var bottomInset: CGFloat = 24 {
         didSet {
             refreshPlaceholderInput()
+            updateInsets()
         }
     }
 
@@ -92,8 +96,8 @@ import UIKit
         layer.cornerRadius = cornerRadius
         layer.borderColor = borderColor.cgColor
         layer.borderWidth = borderWidth
-        textContainerInset = UIEdgeInsets(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)
-        placeholderTextView.textContainerInset = textContainerInset
+//        textContainerInset = UIEdgeInsets(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)
+//        placeholderTextView.textContainerInset = textContainerInset
     }
 
     required public init?(coder aDecoder: NSCoder) {
@@ -139,6 +143,11 @@ import UIKit
     func placeholderTapped(_ recognizer: UITapGestureRecognizer) {
         _ = self.becomeFirstResponder()
     }
+
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        bottomInset = counterLabel.bounds.height+borderWidth+4
+    }
 }
 
 //MARK: - Custom Initialization
@@ -172,9 +181,11 @@ extension SMTextView {
         layoutIfNeeded()
 
         counterLabel.sizeToFit()
-        let x = bounds.maxX-counterLabel.bounds.width-8
-        let y = bounds.maxY-counterLabel.bounds.height-8
+
+        let x = bounds.maxX-counterLabel.bounds.width-4-borderWidth
+        let y = bounds.maxY-counterLabel.bounds.height-borderWidth
         counterLabel.frame.origin = CGPoint(x: x, y: y)
+
     }
 
     fileprivate func updateCounterLabelMax() {
@@ -187,6 +198,17 @@ extension SMTextView {
         placeholderTextView.text = placeholder
         placeholderTextView.textColor = placeholderColor
         placeholderTextView.textAlignment = textAlignment
+    }
+    fileprivate func updateInsets() {
+        contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bottomInset, right: 0)
+        if isScrollEnabled {
+            textContainerInset = UIEdgeInsets(top: topInset, left: leftInset, bottom: 0, right: rightInset)
+            placeholderTextView.textContainerInset = textContainerInset
+        }else {
+            textContainerInset = UIEdgeInsets(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)
+            placeholderTextView.textContainerInset = textContainerInset
+        }
+
     }
 }
 
