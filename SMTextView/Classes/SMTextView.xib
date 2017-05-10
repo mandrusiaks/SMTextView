@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" id="WS4-Zt-HJt" customClass="SMTextView" customModule="SMTextView" customModuleProvider="target">
+        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" id="WS4-Zt-HJt" customClass="SMTextView" customModule="Pods_SMTextView_Example">
             <rect key="frame" x="0.0" y="0.0" width="272" height="174"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -31,5 +31,47 @@
             </userDefinedRuntimeAttributes>
             <point key="canvasLocation" x="210" y="-306"/>
         </textView>
+        <view contentMode="scaleToFill" ambiguous="YES" id="Ydi-kn-i7O" customClass="SMTextView" customModule="SMTextView" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="272" height="174"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="q5u-1D-hvV" customClass="SMCustomTextView" customModule="SMTextView" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="18.5" width="272" height="155.5"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0/100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dxa-jq-Enc">
+                    <rect key="frame" x="235.5" y="2" width="32.5" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="q5u-1D-hvV" secondAttribute="bottom" id="2bN-YY-vKD"/>
+                <constraint firstItem="dxa-jq-Enc" firstAttribute="top" secondItem="Ydi-kn-i7O" secondAttribute="top" constant="2" id="6uP-OG-Pal"/>
+                <constraint firstAttribute="trailing" secondItem="q5u-1D-hvV" secondAttribute="trailing" id="j32-LC-hZ8"/>
+                <constraint firstItem="q5u-1D-hvV" firstAttribute="top" secondItem="dxa-jq-Enc" secondAttribute="bottom" constant="2" id="jI1-QB-sQw"/>
+                <constraint firstItem="q5u-1D-hvV" firstAttribute="leading" secondItem="Ydi-kn-i7O" secondAttribute="leading" id="ubI-vG-uxp"/>
+                <constraint firstAttribute="trailing" secondItem="dxa-jq-Enc" secondAttribute="trailing" constant="4" id="w4f-Ix-bVa"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                    <real key="value" value="2"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                    <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="characterCountLabel" destination="dxa-jq-Enc" id="xxD-Qy-tvC"/>
+                <outlet property="textView" destination="q5u-1D-hvV" id="C0h-YI-q8v"/>
+            </connections>
+            <point key="canvasLocation" x="210" y="-81"/>
+        </view>
     </objects>
 </document>

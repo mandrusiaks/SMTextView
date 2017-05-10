@@ -19,7 +19,11 @@ import UIKit
     @IBInspectable public var placeholder: String = "Placeholder" {
         didSet {
             if text != "" {
-                placeholder = ""
+                placeholderTextView.text = ""
+                placeholderTextView.isHidden = true
+            }else {
+                placeholderTextView.text = placeholder
+                placeholderTextView.isHidden = false
             }
             refreshPlaceholderInput()
         }
@@ -59,7 +63,6 @@ import UIKit
     }
     fileprivate var bottomInset: CGFloat = 24 {
         didSet {
-            refreshPlaceholderInput()
             updateInsets()
         }
     }
@@ -67,7 +70,11 @@ import UIKit
     public override var text: String! {
         didSet {
             if text != "" {
-                placeholder = ""
+                placeholderTextView.text = ""
+                placeholderTextView.isHidden = true
+            }else {
+                placeholderTextView.text = placeholder
+                placeholderTextView.isHidden = false
             }
             refreshPlaceholderInput()
         }
@@ -96,8 +103,6 @@ import UIKit
         layer.cornerRadius = cornerRadius
         layer.borderColor = borderColor.cgColor
         layer.borderWidth = borderWidth
-//        textContainerInset = UIEdgeInsets(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)
-//        placeholderTextView.textContainerInset = textContainerInset
     }
 
     required public init?(coder aDecoder: NSCoder) {
@@ -105,7 +110,6 @@ import UIKit
         delegate = self
         initPlaceholder()
         initLabel()
-
     }
 
     override public init(frame: CGRect, textContainer: NSTextContainer?) {
@@ -183,9 +187,9 @@ extension SMTextView {
         counterLabel.sizeToFit()
 
         let x = bounds.maxX-counterLabel.bounds.width-4-borderWidth
-        let y = bounds.maxY-counterLabel.bounds.height-borderWidth
-        counterLabel.frame.origin = CGPoint(x: x, y: y)
+        let y = bounds.maxY-counterLabel.bounds.height-2-borderWidth
 
+        counterLabel.frame.origin = CGPoint(x: x, y: y)
     }
 
     fileprivate func updateCounterLabelMax() {
@@ -194,8 +198,8 @@ extension SMTextView {
     }
 
     fileprivate func refreshPlaceholderInput() {
+        textViewDidChange(self)
         placeholderTextView.font = font
-        placeholderTextView.text = placeholder
         placeholderTextView.textColor = placeholderColor
         placeholderTextView.textAlignment = textAlignment
     }
@@ -208,7 +212,6 @@ extension SMTextView {
             textContainerInset = UIEdgeInsets(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)
             placeholderTextView.textContainerInset = textContainerInset
         }
-
     }
 }
 
