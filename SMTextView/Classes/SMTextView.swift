@@ -18,13 +18,7 @@ import UIKit
     }
     @IBInspectable public var placeholder: String = "Placeholder" {
         didSet {
-            if text != "" {
-                placeholderTextView.text = ""
-                placeholderTextView.isHidden = true
-            }else {
-                placeholderTextView.text = placeholder
-                placeholderTextView.isHidden = false
-            }
+            adjustPlaceholder()
             refreshPlaceholderInput()
         }
     }
@@ -69,13 +63,7 @@ import UIKit
 
     public override var text: String! {
         didSet {
-            if text != "" {
-                placeholderTextView.text = ""
-                placeholderTextView.isHidden = true
-            }else {
-                placeholderTextView.text = placeholder
-                placeholderTextView.isHidden = false
-            }
+            adjustPlaceholder()
             refreshPlaceholderInput()
         }
     }
@@ -128,11 +116,7 @@ import UIKit
     override public func resignFirstResponder() -> Bool {
         super.resignFirstResponder()
         if placeholderTextView != nil {
-            if self.text.characters.count > 0 {
-                placeholderTextView.isHidden = true
-            }else {
-                placeholderTextView.isHidden = false
-            }
+            adjustPlaceholder()
         }
         return true
     }
@@ -211,6 +195,15 @@ extension SMTextView {
         }else {
             textContainerInset = UIEdgeInsets(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)
             placeholderTextView.textContainerInset = textContainerInset
+        }
+    }
+    fileprivate func adjustPlaceholder() {
+        if text != "" {
+            placeholderTextView.text = ""
+            placeholderTextView.isHidden = true
+        }else {
+            placeholderTextView.text = placeholder
+            placeholderTextView.isHidden = false
         }
     }
 }
