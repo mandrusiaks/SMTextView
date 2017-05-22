@@ -7,6 +7,9 @@
 
 A custom implementation of UITextView with a placeholder and character count. This implementation contains the ability to customize top, left, and right insets individually. SMTextView is compatible with Interface Builder. SMTextView also contains a character count that can be enabled/disabled. To disable, simply set isCharacterCountEnabled to false.
 
+NOTE: Due to character count label, bottomInset is currently no longer customizable. This may be re-enabled in the future. If character count is disabled, bottomInset = topInset.
+
+
 | ![SMTextView](SMTextView/Assets/SMTextView.png) | ![SMTextView2](SMTextView/Assets/IB.png) |
 |:-----------------------------------------------:|:----------------------------------------:|
 
@@ -30,14 +33,11 @@ Optionally, you can set ```maxCharacterCount```. The default character count is 
 
 override func viewDidLoad() {
     super.viewDidLoad()
-    //NOTE: Due to character count label, bottomInset is currently no longer customizable. 
-    //      This may be re-enabled in the future.
     textView.placeholder = "Enter details about the event."
     textView.placeholderColor = .purple
     textView.topInset = 45
     textView.leftInset = 15
     textView.rightInset = 15
-    textView.isCharacterCountEnabled = true
     textView.maxCharacterCount = 200
 }
 
