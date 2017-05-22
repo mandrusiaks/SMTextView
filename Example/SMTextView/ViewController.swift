@@ -11,12 +11,12 @@ import SMTextView
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var textView: SMTextView!
+    @IBOutlet weak var textView: UITextView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 //        textView.isCharacterCountEnabled = false
-        textView.maxCharacterCount = 400
+//        textView.maxCharacterCount = 400
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
