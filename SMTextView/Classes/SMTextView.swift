@@ -72,6 +72,9 @@ import UIKit
         didSet {
             if !isCharacterCountEnabled {
                 counterLabel.removeFromSuperview()
+                bottomInset = topInset
+            }else {
+                bottomInset = counterLabel.bounds.height+borderWidth+4
             }
         }
     }
@@ -134,7 +137,7 @@ import UIKit
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-        bottomInset = counterLabel.bounds.height+borderWidth+4
+        //        bottomInset = counterLabel.bounds.height+borderWidth+4
     }
 }
 
