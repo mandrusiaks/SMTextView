@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SMTextView'
-  s.version          = '0.3.4'
+  s.version          = '0.3.5'
   s.summary          = 'SMTextView provides an easy way to specify a placeholder using a text view. Includes character count.'
 
 # This description is used to generate tags and improve search results.
